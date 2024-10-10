@@ -1,0 +1,31 @@
+﻿<Window x:Class="WPFLearn.Binding_RelativeSource.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFLearn.Binding_RelativeSource"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="{Binding Path=Title}"></TextBlock>
+            <ItemsControl ItemsSource="{Binding Path=ViewModels}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Version}"></TextBlock>
+                            <TextBlock Text="{Binding Remark}" Margin="10, 0"></TextBlock>
+                            <!-- RelativeSource 相对资源; AncestorType 查找的祖先元素; FindAncestor 查找祖先元素 -->
+                            <!-- DataContext 是Window下的DataContext的属性 -->
+                            <TextBlock Text="{Binding DataContext.Other,RelativeSource={RelativeSource AncestorType=Window,Mode=FindAncestor}}"></TextBlock>
+                            <!-- 相对数据子项中的前一项 -->
+                            <TextBlock Margin="10, 0" Text="{Binding Path=Version, RelativeSource={RelativeSource Mode=PreviousData}}"></TextBlock>
+                            <!-- 相对自身的属性绑定 -->
+                            <TextBlock Margin="10, 0" Text="{Binding Path=ActualHeight, RelativeSource={RelativeSource Mode=Self}}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+    </Grid>
+</Window>

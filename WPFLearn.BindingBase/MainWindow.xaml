@@ -1,0 +1,92 @@
+﻿<Window x:Class="WPFLearn.BindingBase.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFLearn.BindingBase"
+        xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <x:Array Type="sys:String" x:Key="strList">
+            <sys:String>Hello C#</sys:String>
+            <sys:String>Hello WPF</sys:String>
+        </x:Array>
+        <TextBox Text="ABC" x:Key="txt"></TextBox>
+        <sys:String x:Key="aaa">AAA</sys:String>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <TextBlock>XAML绑定</TextBlock>
+            <!-- 源对象 -->
+            <!-- TickFrequency=1表示每次数值变化都是+-1 -->
+            <!-- IsSnapToTickEnabled 设置为 true 时，用户在调整 Slider 的值时，滑块会自动对齐到最近的刻度线。这意味着无论用户拖动滑块多远，最终的值都会是刻度线所代表的值 -->
+            <Slider Name="slider1"  TickFrequency="1" IsSnapToTickEnabled="True"/>
+            <!-- 目标对象 ElementName 监控对象, Path 监控属性/索引器 Mode 模式 TwoWay 双向绑定 OneTwo 源对象属性发生变化目标对象就变化 OneWayToSource 目标对象属性发生变化源对象就变化 OneTime 源对象属性发生变化目标对象就变化(只发生一次) -->
+            <!-- UpdateSourceTrigger 更新源对象的触发方式: PropertyChanged 属性发生变化【目标对象属性】 -->
+            <TextBox Text="{Binding ElementName=slider1,Path=Value,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged, Delay=3000}" />
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <TextBlock>代码绑定</TextBlock>
+            <!-- 源对象 -->
+            <Slider Name="slider2" />
+            <!-- 目标对象 -->
+            <TextBox Name="txt2" />
+            <Button Click="Button_Click">解除绑定</Button>
+            <Button Click="Button_Click_1">获取绑定</Button>
+        </StackPanel>
+        <StackPanel Grid.Row="2">
+            <TextBlock>多绑定</TextBlock>
+            <Slider Name="sliderFontSize" Minimum="1" Maximum="10"></Slider>
+            <TextBox Name="txtContent"></TextBox>
+            <TextBlock Margin="3" Name="lblSampleText" 
+                       FontSize="{Binding ElementName=sliderFontSize, Path=Value,Mode=OneWay}"
+                       Text="{Binding ElementName=txtContent, Path=Text,Mode=OneWay}"
+                       ></TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Row="3">
+            <TextBlock>多绑定</TextBlock>
+            <Slider Name="slider3" Minimum="1" Maximum="10"></Slider>
+            <TextBox Name="txtContent2" Text="{Binding ElementName=slider3, Path=Value, Mode=TwoWay, UpdateSourceTrigger=Explicit}"></TextBox>
+            <Button Click="Button_Click_2">更新Slider值</Button>
+        </StackPanel>
+        <StackPanel Grid.Row="4">
+            <TextBlock>绑定非元素对象</TextBlock>
+            <!-- 绑定静态资源【数组的第一项】,Path是索引值 -->
+            <TextBox Text="{Binding Source={StaticResource strList}, Path=[0]}"></TextBox>
+            <TextBox Text="{Binding Source={StaticResource strList}, Path=[1]}"></TextBox>
+            <!-- Source绑定数据源, Path 是数据源的属性 -->
+            <TextBlock Text="{Binding Source={StaticResource txt},Path=Text}"></TextBlock>
+            <TextBlock Text="{Binding Source={StaticResource aaa}}"></TextBlock>
+            <!-- 绑定静态变量 -->
+            <TextBox Text="{x:Static local:Data.Value}" />
+        </StackPanel>
+        <!-- RelativeSource -->
+        <StackPanel Grid.Row="5" Width="200">
+            <!-- RelativeSource的FindAncestor模式, 查找父元素为StackPanel的Width值 -->
+            <TextBlock Text="{Binding Path=Width,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type StackPanel}}}"></TextBlock>
+        </StackPanel>
+        <!-- DataContext 从当前元素树向上查找第一个非空的DataContext属性为源对象 -->
+        <StackPanel Grid.Row="6">
+            <!-- 表明使用DataContext的Name -->
+            <TextBox Text="{Binding Path=Name}"></TextBox>
+            <TextBox>
+                <TextBox.DataContext>
+                    <local:Test Name="哈哈"></local:Test>
+                </TextBox.DataContext>
+                <TextBox.Text>
+                    <Binding Path="Name"></Binding>
+                </TextBox.Text>
+            </TextBox>
+        </StackPanel>
+    </Grid>
+</Window>

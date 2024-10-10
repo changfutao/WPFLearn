@@ -1,0 +1,64 @@
+﻿<Window x:Class="WPFLearn.Binding_Source.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFLearn.Binding_Source"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <!-- Window.Resources里的相当于实例化当前类的实例, 例如：ViewModel v = new ViewModel() -->
+        <sys:String x:Key="w_str">Hello WPF</sys:String>
+        <x:Array x:Key="w_arr" Type="sys:Int32">
+            <sys:Int32>10</sys:Int32>
+            <sys:Int32>20</sys:Int32>
+            <sys:Int32>30</sys:Int32>
+        </x:Array>
+        <local:ViewModel x:Key="w_obj" Title="绑定"></local:ViewModel>
+        <local:MyClass x:Key="mc" Value="10"></local:MyClass>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <TextBlock>单值</TextBlock>
+            <!-- 这里的Path是w_str本身,可以省略,如果不省略则为. -->
+            <TextBlock Text="{Binding Source={StaticResource w_str},Path=.}"></TextBlock>
+            <!-- 如果是数组的某一项值,则Path为数组的索引值 -->
+            <TextBlock Text="{Binding Source={StaticResource w_arr},Path=[1]}"></TextBlock>
+            <!-- 如果是对象的属性值,则Path为属性名 -->
+            <TextBlock Text="{Binding Source={StaticResource w_obj},Path=Title}"></TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <TextBlock>数组</TextBlock>
+            <ItemsControl ItemsSource="{Binding Source={StaticResource w_arr}}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox VerticalAlignment="Center"></CheckBox>
+                            <!-- Path的.不能省略 -->
+                            <TextBox Padding="10,6" Text="{Binding Path=.}"></TextBox>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+        <StackPanel Grid.Row="2">
+            <TextBlock>绑定依赖属性</TextBlock>
+            <TextBlock Text="{Binding Source={StaticResource mc},Path=Value}"></TextBlock>
+            <TextBlock Text="{Binding Source={StaticResource mc},Path=Num}"></TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Row="3">
+            <TextBlock>使用UniformGrid, 让TextBlock的宽度是窗体的一半</TextBlock>
+            <UniformGrid Columns="2">
+                <Border Name="border"></Border>
+            </UniformGrid>
+            <TextBlock HorizontalAlignment="Left" Width="{Binding ElementName=border,Path=ActualWidth,Mode=OneWay}" Background="Orange"></TextBlock>
+        </StackPanel>
+    </Grid>
+</Window>
