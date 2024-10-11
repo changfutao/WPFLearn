@@ -46,9 +46,9 @@ namespace WPFLearn.Binding_ObservableCollection
             Task.Run(() =>
             {
                 Task.Delay(5000).GetAwaiter().GetResult();
-                // 更改对象中的属性值
+                // 更改对象中的属性值【属性的数据绑定,对象已经存在于界面】
                 mainViewModel.UserName = "cft";
-                // 新增项必须在UI线程中操作
+                // 新增项必须在UI线程中操作【不能太频繁, 会造成UI假死】
                 Application.Current.Dispatcher.Invoke(() =>
                 {
                     // 向数组中新增新项
