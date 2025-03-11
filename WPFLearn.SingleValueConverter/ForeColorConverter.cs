@@ -21,7 +21,7 @@ namespace WPFLearn.SingleValueConverter
         /// <param name="targetType">目标属性的类型</param>
         /// <param name="parameter">转换参数</param>
         /// <param name="culture">本地化</param>
-        /// <returns></returns>
+        /// <returns>给目标的值</returns>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if(value != null && value.ToString() == "我是标题")
