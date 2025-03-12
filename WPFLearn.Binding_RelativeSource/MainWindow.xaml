@@ -15,7 +15,7 @@
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="{Binding Version}"></TextBlock>
                             <TextBlock Text="{Binding Remark}" Margin="10, 0"></TextBlock>
-                            <!-- RelativeSource 相对资源; AncestorType 查找的祖先元素; FindAncestor 查找祖先元素 -->
+                            <!-- RelativeSource 相对资源; AncestorType 查找的祖先元素(具体的); Mode=FindAncestor 查找祖先元素 -->
                             <!-- DataContext 是Window下的DataContext的属性 -->
                             <TextBlock Text="{Binding DataContext.Other,RelativeSource={RelativeSource AncestorType=Window,Mode=FindAncestor}}"></TextBlock>
                             <!-- 相对数据子项中的前一项 -->

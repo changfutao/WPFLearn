@@ -1,0 +1,34 @@
+{
+  "dishes": [
+    {
+      "Name": "土豆泥底披萨",
+      "Category": "披萨",
+      "Comment": "本店特色",
+      "Score": 4.5
+    },
+    {
+      "Name": "烤馕披萨",
+      "Category": "披萨",
+      "Comment": "本店特色",
+      "Score": 5
+    },
+    {
+      "Name": "水果披萨",
+      "Category": "披萨",
+      "Comment": "",
+      "Score": 4.5
+    },
+    {
+      "Name": "牛肉披萨",
+      "Category": "披萨",
+      "Comment": "",
+      "Score": 3.5
+    },
+    {
+      "Name": "鱼香肉丝",
+      "Category": "川菜",
+      "Comment": "",
+      "Score": 4.5
+    }
+  ]
+}
