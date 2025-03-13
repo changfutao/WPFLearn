@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace WPFLearn.OrderFoodTest
+namespace WPFLearn.MahApp
 {
     /// <summary>
     /// Interaction logic for App.xaml

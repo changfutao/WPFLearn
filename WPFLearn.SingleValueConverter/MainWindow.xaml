@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.DataContext>
+        <!-- 相当于 this.DataContext = new Data() -->
         <local:Data></local:Data>
     </Window.DataContext>
     <Window.Resources>

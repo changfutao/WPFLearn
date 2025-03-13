@@ -8,9 +8,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WPFLearn.OrderFoodTest.ViewModels;
+using WPFLearn.OrderFood.ViewModels;
 
-namespace WPFLearn.OrderFoodTest
+namespace WPFLearn.OrderFood
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

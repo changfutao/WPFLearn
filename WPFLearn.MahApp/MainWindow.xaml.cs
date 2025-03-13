@@ -8,9 +8,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WPFLearn.MVVMBasic.ViewModels;
 
-namespace WPFLearn.MVVMBasic
+namespace WPFLearn.MahApp
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -20,7 +19,6 @@ namespace WPFLearn.MVVMBasic
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new MainWindowViewModel();
         }
     }
 }

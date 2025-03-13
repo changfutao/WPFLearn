@@ -4,18 +4,52 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFLearn.MVVMBasic"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:is="http://schemas.microsoft.com/expression/2010/interactions"
         mc:Ignorable="d"
-        xmlns:vm="clr-namespace:WPFLearn.MVVMBasic.ViewModels"
         Title="MainWindow" Height="450" Width="800" FontSize="20">
-    <Window.DataContext>
-        <vm:WindowViewModel />
-    </Window.DataContext>
     <StackPanel>
-        <TextBox Text="{Binding mainWindow.Num1, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-        <TextBox Text="{Binding mainWindow.Num2, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-        <TextBox Text="{Binding mainWindow.Total}"></TextBox>
-        <Border Background="DeepPink" Height="5" />
-        <TextBox Text="{Binding mainWindow.Num1}" />
-        <Button Command="{Binding mainWindow.Btn2Command}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}">按钮1</Button>
+        <!-- MVVM案例 -->
+        <TextBox Text="{Binding Num1, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <TextBox Text="{Binding Num2, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <TextBox Text="{Binding Result}"></TextBox>
+        <Button Command="{Binding addCommand}">Add</Button>
+        <Border BorderBrush="Purple" BorderThickness="3"></Border>
+        <!-- 内置命令 -->
+        <Button Command="ApplicationCommands.Open" CommandParameter="123" Content="{Binding Path=Command.Text, RelativeSource={RelativeSource Self}}"></Button>
+        <Button Command="ApplicationCommands.Copy" CommandParameter="123" Content="{Binding Path=Command.Text, RelativeSource={RelativeSource Self}}"></Button>
+        <!-- 鼠标触发 -->
+        <Button Content="Btn">
+            <Button.InputBindings>
+                <!-- MouseAction 触发方式; Command 触发执行的函数 -->
+                <MouseBinding MouseAction="MiddleDoubleClick" Command="{Binding MouseCommand}"></MouseBinding>
+            </Button.InputBindings>
+        </Button>
+        <!-- 键盘触发 -->
+        <TextBox Text="{Binding Txt, UpdateSourceTrigger=PropertyChanged}">
+            <TextBox.InputBindings>
+                <!-- Modifiers 和 Key 组合按键; Command 触发执行的函数 -->
+                <KeyBinding Key="W" Modifiers="Ctrl" Command="{Binding KeyCommand}"></KeyBinding>
+            </TextBox.InputBindings>
+        </TextBox>
+        <!-- 任意时间的绑定处理 -->
+        <ComboBox>
+            <i:Interaction.Triggers>
+                <!-- 方式一: EventName 事件名(跟事件名一致) -->
+                <!--<i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding MouseCommand}" />
+                </i:EventTrigger>-->
+                <!-- 方式二: -->
+                <i:EventTrigger EventName="SelectionChanged">
+                    <!-- 反射 -->
+                    <!-- Binding里没有指定Source, Path就是ComboBox_SelectionChanged, 会去找DataContext-->
+                    <is:CallMethodAction TargetObject="{Binding}" MethodName="ComboBox_SelectionChanged"></is:CallMethodAction>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <ComboBoxItem>AAA</ComboBoxItem>
+            <ComboBoxItem>BBB</ComboBoxItem>
+            <ComboBoxItem>CCC</ComboBoxItem>
+            <ComboBoxItem>DDD</ComboBoxItem>
+        </ComboBox>
     </StackPanel>
 </Window>
