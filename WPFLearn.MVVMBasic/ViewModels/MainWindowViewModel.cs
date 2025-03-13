@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Navigation;
+using WPFLearn.MVVMBasic.Base;
 
 namespace WPFLearn.MVVMBasic.ViewModels
 {
@@ -61,6 +62,7 @@ namespace WPFLearn.MVVMBasic.ViewModels
         public AddCommand addCommand { get; set; }
         public CommandBase MouseCommand { get; set; }
         public CommandBase KeyCommand { get; set; }
+        public CommandBase OpenCommand { get; set; }
         public MainWindowViewModel()
         {
             addCommand = new AddCommand()
@@ -85,6 +87,20 @@ namespace WPFLearn.MVVMBasic.ViewModels
                     MessageBox.Show($"用户输入:{this.Txt}");
                 })
             };
+            OpenCommand = new CommandBase
+            {
+                ActionExecute = new Action<object>((obj) =>
+                {
+                    var child = WindowManager._store["ChildWindow"];
+                    Window childWindow = Activator.CreateInstance(child.WinType) as Window;
+                    if(childWindow != null)
+                    {
+                        childWindow.Owner = child.Owner;
+                        childWindow.ShowDialog();
+                    }
+                })
+            };
+    
         }
 
         public void ComboBox_SelectionChanged(object sender, EventArgs e)

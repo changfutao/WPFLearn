@@ -51,5 +51,6 @@
             <ComboBoxItem>CCC</ComboBoxItem>
             <ComboBoxItem>DDD</ComboBoxItem>
         </ComboBox>
+        <Button Command="{Binding OpenCommand}">打开</Button>
     </StackPanel>
 </Window>
