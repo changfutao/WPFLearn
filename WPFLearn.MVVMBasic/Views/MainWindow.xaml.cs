@@ -23,4 +23,24 @@ namespace WPFLearn.MVVMBasic
             this.DataContext = new MainWindowViewModel();
         }
     }
+
+    class CustomText : TextBox
+    {
+
+
+        public int IsView
+        {
+            get { return (int)GetValue(IsViewProperty); }
+            set { SetValue(IsViewProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsViewProperty =
+            DependencyProperty.Register(
+                "IsView",
+                typeof(int),
+                typeof(CustomText),
+                new PropertyMetadata(0));
+
+
+    }
 }
