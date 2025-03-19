@@ -77,6 +77,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "依赖属性和附加属性
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFLearn.DependencyPropertyDemo", "WPFLearn.DependencyPropertyDemo\WPFLearn.DependencyPropertyDemo.csproj", "{13E5CA0B-3613-4B4D-A526-2A4BF399BAF0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "集合控件", "集合控件", "{D68B86D2-95C5-47C6-9417-04BE40FC826B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFLearn.ItemControlDemo", "WPFLearn.ItemControlDemo\WPFLearn.ItemControlDemo.csproj", "{BCCF5C9B-762A-4380-A2FF-2FB3B7B99185}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -179,6 +183,10 @@ Global
 		{13E5CA0B-3613-4B4D-A526-2A4BF399BAF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13E5CA0B-3613-4B4D-A526-2A4BF399BAF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13E5CA0B-3613-4B4D-A526-2A4BF399BAF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCCF5C9B-762A-4380-A2FF-2FB3B7B99185}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCCF5C9B-762A-4380-A2FF-2FB3B7B99185}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCCF5C9B-762A-4380-A2FF-2FB3B7B99185}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCCF5C9B-762A-4380-A2FF-2FB3B7B99185}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -212,6 +220,7 @@ Global
 		{F1C0A5D8-1109-4323-B084-6075102E929E} = {3356416F-CE30-4747-A567-C40C1639CA95}
 		{1059EF23-B274-4FC9-8075-32983E5D5D76} = {3356416F-CE30-4747-A567-C40C1639CA95}
 		{13E5CA0B-3613-4B4D-A526-2A4BF399BAF0} = {D025FD63-3317-4F84-B504-856ABF37DF31}
+		{BCCF5C9B-762A-4380-A2FF-2FB3B7B99185} = {D68B86D2-95C5-47C6-9417-04BE40FC826B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {743B0726-F3F7-41AC-B3CD-C7F33E4501C3}
