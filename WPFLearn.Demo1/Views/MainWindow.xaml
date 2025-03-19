@@ -1,0 +1,57 @@
+﻿<Window x:Class="WPFLearn.Demo1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFLearn.Demo1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="1200" Background="#FF0E202A">
+    <Window.Resources>
+        <Style TargetType="RadioButton" x:Key="MenuItemStyle">
+            <Setter Property="TextBlock.Foreground" Value="#fff"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Grid Height="40" Background="Transparent">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="40" />
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{TemplateBinding Tag}" FontFamily="{StaticResource IconFont}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18"></TextBlock>
+                            <TextBlock Text="{Binding Content,RelativeSource={RelativeSource AncestorType=RadioButton}}" Grid.Column="1" VerticalAlignment="Center"></TextBlock>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid  Margin="5,10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="160" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center"  Background="#fff">
+            <TextBlock>
+                <Run Text="&#xe601;" FontFamily="{StaticResource IconFont}" FontSize="22"></Run>
+                <Run Text="XT" FontSize="15"></Run>
+            </TextBlock>
+        </StackPanel>
+        <TextBlock Text="{Binding PageTitle}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#fff" Grid.Column="1" FontSize="26"></TextBlock>
+        <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="5, 0">
+            <TextBlock Text="&#xe602;" FontFamily="{StaticResource IconFont}" Margin="10, 0" FontSize="20"></TextBlock>
+            <TextBlock Text="{Binding User.UserName, StringFormat=Hi\, \{0\}}" FontSize="20" Foreground="#fff" VerticalAlignment="Center"></TextBlock>
+        </StackPanel>
+        <ItemsControl Grid.Row="1" Margin="10, 15" ItemsSource="{Binding Menus}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <RadioButton Content="{Binding MenuName}" Tag="{Binding MenuIcon}" GroupName="menu" Style="{StaticResource MenuItemStyle}" Command="{Binding Path=DataContext.SwitchPageCommand, RelativeSource={RelativeSource AncestorType=Window,Mode=FindAncestor}}" CommandParameter="{Binding MenuPage}"></RadioButton>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <ContentControl Grid.Row="1" Grid.Column="1" Content="{Binding Page}"></ContentControl>
+    </Grid>
+</Window>
