@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="WPFLearn.ItemControlDemo.Views.Template"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WPFLearn.ItemControlDemo.Views"
+             mc:Ignorable="d" 
+             xmlns:vm="clr-namespace:WPFLearn.ItemControlDemo.ViewModels"
+             d:DesignHeight="450" d:DesignWidth="800" Background="#fff">
+    <UserControl.DataContext>
+        <vm:ItemTemplateViewModel />
+    </UserControl.DataContext>
+    <!-- 实现给ItemsControl加一个标题,在ItemPanel中实现不了,需要通过Template来实现 -->
+    <Grid>
+        <ItemsControl ItemsSource="{Binding Names}">
+            <!-- ItemsPanel 改变容器布局 -->
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <!-- Template 可以丰富容器, 例如添加Header -->
+            <ItemsControl.Template>
+                <ControlTemplate>
+                    <DockPanel>
+                        <TextBlock Text="我是ItemsControl的Title" DockPanel.Dock="Top" />
+                        <!-- 方式一: 将ItemTemplate里的内容放到ItemsPresenter -->
+                        <!--<ItemsPresenter />-->
+                        <!-- 方式二: 通过设置IsItemsHost为True将ItemTemplate里的内容放到StackPanel,如果使用这种,那么ItemsPanel没有作用了 -->
+                        <StackPanel IsItemsHost="True" />
+                    </DockPanel>
+                </ControlTemplate>
+            </ItemsControl.Template>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border Padding="10">
+                        <TextBlock Text="{Binding}" />
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Grid>
+</UserControl>
