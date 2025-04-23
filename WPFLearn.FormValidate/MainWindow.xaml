@@ -1,0 +1,31 @@
+﻿<Window x:Class="WPFLearn.FormValidate.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFLearn.FormValidate"
+        xmlns:rules ="clr-namespace:WPFLearn.FormValidate.ValidateRules"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" TextElement.FontSize="20">
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self},Path=(Validation.Errors)[0].ErrorContent}" ></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <StackPanel>
+            <TextBox Width="160" Margin="0,10,0,0">
+                <Binding Path="Title" UpdateSourceTrigger="PropertyChanged" ValidatesOnNotifyDataErrors="True">
+                    <Binding.ValidationRules>
+                        <rules:MyErrorValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox>
+            <Button>Click</Button>
+        </StackPanel>
+    </Grid>
+</Window>
