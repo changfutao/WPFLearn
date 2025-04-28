@@ -89,6 +89,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05-表单验证", "05-表�
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFLearn.FormValidate", "WPFLearn.FormValidate\WPFLearn.FormValidate.csproj", "{C3E2B62B-AA39-4E49-91F4-BE6377A73DF0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataGrid", "DataGrid", "{2B97AA2E-54C0-4682-BE0D-2D3C35651603}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFLearn.DataGridDemo", "WPFLearn.DataGridDemo\WPFLearn.DataGridDemo.csproj", "{5A918E0D-74B0-4930-B044-ED906E23A3C2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -207,6 +211,10 @@ Global
 		{C3E2B62B-AA39-4E49-91F4-BE6377A73DF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3E2B62B-AA39-4E49-91F4-BE6377A73DF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3E2B62B-AA39-4E49-91F4-BE6377A73DF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A918E0D-74B0-4930-B044-ED906E23A3C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A918E0D-74B0-4930-B044-ED906E23A3C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A918E0D-74B0-4930-B044-ED906E23A3C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A918E0D-74B0-4930-B044-ED906E23A3C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -245,6 +253,7 @@ Global
 		{CCFE037A-0EAA-4E82-A867-91EC776B7376} = {3356416F-CE30-4747-A567-C40C1639CA95}
 		{7B6D452A-2D3F-4057-958A-3822F9E7B0A5} = {43D7CBDC-48BA-403A-B1B1-B02795B6DCE9}
 		{C3E2B62B-AA39-4E49-91F4-BE6377A73DF0} = {7B6D452A-2D3F-4057-958A-3822F9E7B0A5}
+		{5A918E0D-74B0-4930-B044-ED906E23A3C2} = {2B97AA2E-54C0-4682-BE0D-2D3C35651603}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {743B0726-F3F7-41AC-B3CD-C7F33E4501C3}
